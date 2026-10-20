@@ -1,2 +1,0 @@
-model,question,run,status,ttft_s,total_s,prompt_tokens,output_tokens,thoughts_tokens,total_tokens,output_chars
-gemini-3.5-flash-lite,short,1,ok,0.7347020539999676,0.888221317999978,14,53,0,67,110
