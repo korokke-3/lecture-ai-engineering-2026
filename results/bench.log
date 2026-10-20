@@ -1,0 +1,96 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspaces/lecture-ai-engineering-2026/app/bench.py", line 179, in <module>
+    main()
+  File "/workspaces/lecture-ai-engineering-2026/app/bench.py", line 173, in main
+    records = run_bench(client, args.models, args.questions, args.repeat, writer)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lecture-ai-engineering-2026/app/bench.py", line 130, in run_bench
+    rec = measure(client, model, qid, QUESTIONS[qid], run)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lecture-ai-engineering-2026/app/bench.py", line 67, in measure
+    for chunk in client.models.generate_content_stream(model=model, contents=question):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lecture-ai-engineering-2026/.venv/lib/python3.12/site-packages/google/genai/models.py", line 6487, in generate_content_stream
+    for chunk in response:
+                 ^^^^^^^^
+  File "/workspaces/lecture-ai-engineering-2026/.venv/lib/python3.12/site-packages/google/genai/models.py", line 6150, in _generate_content_stream_with_continuation
+    for chunk in self._generate_content_stream(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lecture-ai-engineering-2026/.venv/lib/python3.12/site-packages/google/genai/models.py", line 4776, in _generate_content_stream
+    for response in self._api_client.request_streamed(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lecture-ai-engineering-2026/.venv/lib/python3.12/site-packages/google/genai/_api_client.py", line 1856, in request_streamed
+    session_response = self._request(http_request, http_options, stream=True)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lecture-ai-engineering-2026/.venv/lib/python3.12/site-packages/google/genai/_api_client.py", line 1632, in _request
+    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lecture-ai-engineering-2026/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+    do = self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lecture-ai-engineering-2026/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 371, in iter
+    result = action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lecture-ai-engineering-2026/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/workspaces/lecture-ai-engineering-2026/.venv/lib/python3.12/site-packages/tenacity/__init__.py", line 473, in __call__
+    result = fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lecture-ai-engineering-2026/.venv/lib/python3.12/site-packages/google/genai/_api_client.py", line 1608, in _request_once
+    response = self._httpx_client.send(httpx_request, stream=stream)  # type: ignore[union-attr, arg-type]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lecture-ai-engineering-2026/.venv/lib/python3.12/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lecture-ai-engineering-2026/.venv/lib/python3.12/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lecture-ai-engineering-2026/.venv/lib/python3.12/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lecture-ai-engineering-2026/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lecture-ai-engineering-2026/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lecture-ai-engineering-2026/.venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/workspaces/lecture-ai-engineering-2026/.venv/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lecture-ai-engineering-2026/.venv/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lecture-ai-engineering-2026/.venv/lib/python3.12/site-packages/httpcore/_sync/http11.py", line 136, in handle_request
+    raise exc
+  File "/workspaces/lecture-ai-engineering-2026/.venv/lib/python3.12/site-packages/httpcore/_sync/http11.py", line 106, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lecture-ai-engineering-2026/.venv/lib/python3.12/site-packages/httpcore/_sync/http11.py", line 177, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lecture-ai-engineering-2026/.venv/lib/python3.12/site-packages/httpcore/_sync/http11.py", line 217, in _receive_event
+    data = self._network_stream.read(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/lecture-ai-engineering-2026/.venv/lib/python3.12/site-packages/httpcore/_backends/sync.py", line 128, in read
+    return self._sock.recv(max_bytes)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/ssl.py", line 1245, in recv
+    return self.read(buflen)
+           ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/ssl.py", line 1118, in read
+    return self._sslobj.read(len)
+           ^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+
+== gemini-3.5-flash-lite（間隔 4.4s） ==
+  gemini-3.5-flash-lite    short  #1  TTFT  0.73s  全体  0.89s  入力 14 / 出力 53 / 思考 0  (60 tok/s)

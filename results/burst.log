@@ -1,0 +1,30 @@
+
+== burst: gemini-3.5-flash-lite を 20 回連続 ==
+  [  1.1s]  gemini-3.5-flash-lite    short  #1  TTFT  0.96s  全体  1.10s  入力 14 / 出力 55 / 思考 0  (50 tok/s)
+  [  1.9s]  gemini-3.5-flash-lite    short  #2  TTFT  0.65s  全体  0.79s  入力 14 / 出力 54 / 思考 0  (68 tok/s)
+  [  3.4s]  gemini-3.5-flash-lite    short  #3  TTFT  1.29s  全体  1.47s  入力 14 / 出力 47 / 思考 0  (32 tok/s)
+  [  4.4s]  gemini-3.5-flash-lite    short  #4  TTFT  0.88s  全体  1.03s  入力 14 / 出力 57 / 思考 0  (55 tok/s)
+  [  5.5s]  gemini-3.5-flash-lite    short  #5  TTFT  0.84s  全体  1.10s  入力 14 / 出力 51 / 思考 0  (46 tok/s)
+  [  6.3s]  gemini-3.5-flash-lite    short  #6  TTFT  0.56s  全体  0.77s  入力 14 / 出力 49 / 思考 0  (64 tok/s)
+  [  7.3s]  gemini-3.5-flash-lite    short  #7  TTFT  0.80s  全体  1.05s  入力 14 / 出力 49 / 思考 0  (47 tok/s)
+  [  8.1s]  gemini-3.5-flash-lite    short  #8  TTFT  0.55s  全体  0.77s  入力 14 / 出力 48 / 思考 0  (62 tok/s)
+  [  9.4s]  gemini-3.5-flash-lite    short  #9  TTFT  1.16s  全体  1.33s  入力 14 / 出力 49 / 思考 0  (37 tok/s)
+  [ 10.5s]  gemini-3.5-flash-lite    short  #10  TTFT  0.89s  全体  1.05s  入力 14 / 出力 50 / 思考 0  (47 tok/s)
+  [ 11.2s]  gemini-3.5-flash-lite    short  #11  TTFT  0.57s  全体  0.75s  入力 14 / 出力 48 / 思考 0  (64 tok/s)
+  [ 12.8s]  gemini-3.5-flash-lite    short  #12  TTFT  1.34s  全体  1.54s  入力 14 / 出力 56 / 思考 0  (36 tok/s)
+  [ 13.0s]  gemini-3.5-flash-lite    short  #13  ERROR 429  (0.27s)
+  [ 13.3s]  gemini-3.5-flash-lite    short  #14  ERROR 429  (0.28s)
+  [ 13.6s]  gemini-3.5-flash-lite    short  #15  ERROR 429  (0.29s)
+  [ 13.8s]  gemini-3.5-flash-lite    short  #16  ERROR 429  (0.21s)
+  [ 14.1s]  gemini-3.5-flash-lite    short  #17  ERROR 429  (0.32s)
+  [ 14.4s]  gemini-3.5-flash-lite    short  #18  ERROR 429  (0.26s)
+  [ 14.7s]  gemini-3.5-flash-lite    short  #19  ERROR 429  (0.30s)
+  [ 15.0s]  gemini-3.5-flash-lite    short  #20  ERROR 429  (0.30s)
+
+  成功 12/20、最初の 429: 13（15.0s 内）
+
+| モデル | 質問 | 成功/試行 | TTFT 中央値(s) | 全体 中央値(s) | 入力 | 出力 中央値 | 思考 中央値 | 出力 tok/s |
+|---|---|---|---|---|---|---|---|---|
+| gemini-3.5-flash-lite | short | 12/20 | 0.86 | 1.05 | 14 | 50 | 0 | 49 |
+
+結果: results/bench_burst_20261020_095307.csv
