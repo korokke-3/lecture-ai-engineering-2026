@@ -23,7 +23,7 @@ from datetime import datetime
 from pathlib import Path
 
 from google import genai
-from google.genai import errors
+from google.genai import errors, types
 
 from app.config import get_api_key
 
@@ -74,6 +74,8 @@ def measure(client: genai.Client, model: str, qid: str, question: str, run: int)
                 usage = chunk.usage_metadata
     except errors.APIError as e:
         rec.status = str(e.code)
+    except Exception as e:  # タイムアウトや接続断も1件の失敗として記録し、計測は続ける
+        rec.status = type(e).__name__
     rec.total_s = time.perf_counter() - start
     if usage:
         rec.prompt_tokens = usage.prompt_token_count
@@ -161,7 +163,8 @@ def main() -> None:
     parser.add_argument("--burst", type=int, default=0, help="指定すると、最初のモデルで連続呼び出しのみ行う")
     args = parser.parse_args()
 
-    client = genai.Client(api_key=get_api_key())
+    # ストリームが止まったときに計測全体が止まらないよう、1 回あたり 60 秒で打ち切る
+    client = genai.Client(api_key=get_api_key(), http_options=types.HttpOptions(timeout=60_000))
     RESULTS_DIR.mkdir(exist_ok=True)
     path = RESULTS_DIR / f"bench_{'burst_' if args.burst else ''}{datetime.now():%Y%m%d_%H%M%S}.csv"
     with path.open("w", newline="") as f:
