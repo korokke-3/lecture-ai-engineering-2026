@@ -1,0 +1,36 @@
+{
+  "note": "第2回 宿題（発展）の評価用質問と正解。category: exact=用語集にある語をそのまま / paraphrase=言い回しを変えた質問 / unknown=用語集にない語。must_include は「グループごとにどれか 1 つを含む」を全グループで満たせば正解。unknown は『用語集に載っていません』系の応答（abstain）が正解。query は検索方式で使う検索語（質問文の中の名詞句をそのまま使う想定）。",
+  "abstain_pattern": "用語集(に|には)(は)?(載って|記載が|見つかり|あり)",
+  "items": [
+    {"id": "E01", "category": "exact", "term_id": "lora", "question": "LoRAとは？", "query": "LoRA", "must_include": [["低ランク"]]},
+    {"id": "E02", "category": "exact", "term_id": "qlora", "question": "QLoRAとは？", "query": "QLoRA", "must_include": [["4ビット", "4bit", "4-bit", "4 ビット"], ["量子化"]]},
+    {"id": "E03", "category": "exact", "term_id": "default-model", "question": "既定モデルとは？", "query": "既定モデル", "must_include": [["gemini-3.5-flash-lite"]]},
+    {"id": "E04", "category": "exact", "term_id": "homework-levels", "question": "宿題の3レベルとは？", "query": "宿題の3レベル", "must_include": [["基礎"], ["発展"]]},
+    {"id": "E05", "category": "exact", "term_id": "pi", "question": "Piとは？", "query": "Pi", "must_include": [["コーディングエージェント"], ["MIT"]]},
+    {"id": "E06", "category": "exact", "term_id": "lec-start-tag", "question": "lecNN-start タグとは？", "query": "lecNN-start タグ", "must_include": [["ブランチ"]]},
+    {"id": "E07", "category": "exact", "term_id": "temperature", "question": "temperatureとは？", "query": "temperature", "must_include": [["ランダム"]]},
+    {"id": "E08", "category": "exact", "term_id": "tool-namespace", "question": "ツールの名前空間とは？", "query": "ツールの名前空間", "must_include": [["接頭辞", "プレフィックス"]]},
+    {"id": "E09", "category": "exact", "term_id": "answer-md", "question": "answer.mdとは？", "query": "answer.md", "must_include": [["PR", "プルリクエスト"]]},
+    {"id": "E10", "category": "exact", "term_id": "harness", "question": "ハーネスとは？", "query": "ハーネス", "must_include": [["ループ"], ["ツール"]]},
+
+    {"id": "P01", "category": "paraphrase", "term_id": "default-model", "question": "演習で標準的に使う Gemini のモデル名を教えて", "query": "標準的に使うモデル", "must_include": [["gemini-3.5-flash-lite"]]},
+    {"id": "P02", "category": "paraphrase", "term_id": "homework-levels", "question": "宿題は全部のレベルをやらないといけないの？", "query": "宿題", "must_include": [["1つ", "一つ", "どれか"]]},
+    {"id": "P03", "category": "paraphrase", "term_id": "qlora", "question": "ベースモデルを4bitに量子化してからLoRAで学習するやり方は何と呼びますか？", "query": "4bitに量子化してからLoRA", "must_include": [["QLoRA"]]},
+    {"id": "P04", "category": "paraphrase", "term_id": "lora-rank", "question": "LoRA の r を大きくすると何が変わりますか？", "query": "r", "must_include": [["表現力"]]},
+    {"id": "P05", "category": "paraphrase", "term_id": "hallucination", "question": "LLMがもっともらしい嘘をつく現象を何と言いますか？", "query": "もっともらしい嘘", "must_include": [["ハルシネーション"]]},
+    {"id": "P06", "category": "paraphrase", "term_id": "pi", "question": "Pi coding agent の npm パッケージ名は？", "query": "Pi coding agent", "must_include": [["@earendil-works/pi-coding-agent"]]},
+    {"id": "P07", "category": "paraphrase", "term_id": "codespaces", "question": "コードスペースを使わないときはどうすればいいですか？", "query": "コードスペース", "must_include": [["停止"]]},
+    {"id": "P08", "category": "paraphrase", "term_id": "api-key", "question": "この講座では API key をどこに登録しますか？", "query": "API key", "must_include": [["Codespaces secret", "Codespacesのシークレット", "GEMINI_API_KEY"]]},
+    {"id": "P09", "category": "paraphrase", "term_id": "overfitting", "question": "学習データにだけ合いすぎて未知の入力に弱くなる状態を何と言いますか？", "query": "学習データにだけ合いすぎ", "must_include": [["過学習", "オーバーフィッティング"]]},
+    {"id": "P10", "category": "paraphrase", "term_id": "mcp-config", "question": "MCPの設定ファイルではサーバーをどう書きますか？", "query": "MCPの設定ファイル", "must_include": [["mcpServers"]]},
+
+    {"id": "U01", "category": "unknown", "term_id": null, "question": "RAGとは？", "query": "RAG", "must_include": []},
+    {"id": "U02", "category": "unknown", "term_id": null, "question": "蒸留とは？", "query": "蒸留", "must_include": []},
+    {"id": "U03", "category": "unknown", "term_id": null, "question": "DPOとは？", "query": "DPO", "must_include": []},
+    {"id": "U04", "category": "unknown", "term_id": null, "question": "エンベディングとは？", "query": "エンベディング", "must_include": []},
+    {"id": "U05", "category": "unknown", "term_id": null, "question": "プロンプトインジェクションとは？", "query": "プロンプトインジェクション", "must_include": []},
+    {"id": "U06", "category": "unknown", "term_id": null, "question": "RLHFとは？", "query": "RLHF", "must_include": []},
+    {"id": "U07", "category": "unknown", "term_id": null, "question": "Mixture of Expertsとは？", "query": "Mixture of Experts", "must_include": []},
+    {"id": "U08", "category": "unknown", "term_id": null, "question": "ベクトルデータベースとは？", "query": "ベクトルデータベース", "must_include": []}
+  ]
+}
