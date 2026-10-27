@@ -1,0 +1,29 @@
+{
+  "environment": "Google Colab, Tesla T4",
+  "config": {"base_model": "Qwen/Qwen3.5-0.8B", "revision": "2fc06364715b967f1860aea9cf38778875588b17", "seed": 42,
+             "num_train_epochs": 5, "warmup_steps": 6, "lr": 0.0002, "lora_r": 16, "lora_alpha": 32, "max_seq_len": 512,
+             "max_new_tokens": 200, "gen": {"do_sample": false}},
+  "versions": {"transformers": "5.18.0", "peft": "0.21.1", "trl": "1.14.2", "accelerate": "1.15.0", "datasets": "5.1.0"},
+  "train": {
+    "base": {"examples": 116, "seconds": 183, "steps": 75, "first_loss": 3.2767, "final_loss": 0.3500},
+    "plus": {"examples": 256, "seconds": 398, "steps": 160, "first_loss": 3.2503, "final_loss": 0.1051}
+  },
+  "summary": {
+    "before":     {"exact_rate": 0.0, "paraphrase_rate": 0.1, "unknown_rate": 0.0,   "all_rate": 0.036, "逃げ": 0, "断定": 8, "seconds": 245.3},
+    "rag":        {"exact_rate": 0.6, "paraphrase_rate": 0.7, "unknown_rate": 0.125, "all_rate": 0.5,   "逃げ": 0, "断定": 7, "seconds": 48.4},
+    "after_base": {"exact_rate": 0.3, "paraphrase_rate": 0.1, "unknown_rate": 0.0,   "all_rate": 0.143, "逃げ": 0, "断定": 8, "seconds": 85.1},
+    "after_plus": {"exact_rate": 1.0, "paraphrase_rate": 0.1, "unknown_rate": 0.25,  "all_rate": 0.464, "逃げ": 0, "断定": 6, "seconds": 95.9}
+  },
+  "regressed": {"after_base": ["P09"], "after_plus": ["P09"]},
+  "per_question": {
+    "_columns": ["before", "rag", "after_base", "after_plus"],
+    "E01": ["x", "x", "o", "o"], "E02": ["x", "o", "x", "o"], "E03": ["x", "o", "o", "o"], "E04": ["x", "o", "x", "o"],
+    "E05": ["x", "o", "x", "o"], "E06": ["x", "x", "x", "o"], "E07": ["x", "o", "x", "o"], "E08": ["x", "x", "x", "o"],
+    "E09": ["x", "x", "x", "o"], "E10": ["x", "o", "o", "o"],
+    "P01": ["x", "x", "o", "x"], "P02": ["x", "o", "x", "x"], "P03": ["x", "x", "x", "x"], "P04": ["x", "o", "x", "x"],
+    "P05": ["x", "x", "x", "x"], "P06": ["x", "o", "x", "o"], "P07": ["x", "o", "x", "x"], "P08": ["x", "o", "x", "x"],
+    "P09": ["o", "o", "x", "x"], "P10": ["x", "o", "x", "x"],
+    "U01": ["x", "x", "x", "x"], "U02": ["x", "x", "x", "x"], "U03": ["x", "x", "x", "x"], "U04": ["x", "o", "x", "x"],
+    "U05": ["x", "x", "x", "x"], "U06": ["x", "x", "x", "x"], "U07": ["x", "x", "x", "o"], "U08": ["x", "x", "x", "o"]
+  }
+}
