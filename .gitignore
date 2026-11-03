@@ -12,3 +12,6 @@ learning_log/
 
 # macOS
 .DS_Store
+
+# adk run が作るセッション履歴（質問と回答が保存される）はコミットしない
+.adk/
