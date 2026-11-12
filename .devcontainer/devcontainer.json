@@ -3,9 +3,7 @@
   "image": "mcr.microsoft.com/devcontainers/python:3.12",
   "features": {
     // 第3回の Pi デモ・発展課題用
-    "ghcr.io/devcontainers/features/node:1": { "version": "lts" },
-    // 一時的：gh codespace ssh 用（PR の前に戻す）
-    "ghcr.io/devcontainers/features/sshd:1": { "version": "latest" }
+    "ghcr.io/devcontainers/features/node:1": { "version": "lts" }
   },
   "containerEnv": {
     "PYDANTIC_AI_NO_BANNER": "1",
