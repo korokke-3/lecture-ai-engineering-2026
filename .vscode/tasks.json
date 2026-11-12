@@ -1,0 +1,7 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {"label": "lec04 judge before", "type": "shell", "command": "bash lectures/04/_run_judge.sh before", "problemMatcher": []},
+    {"label": "lec04 judge after", "type": "shell", "command": "bash lectures/04/_run_judge.sh after", "problemMatcher": []}
+  ]
+}
