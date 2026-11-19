@@ -22,6 +22,9 @@ RAG_TOP_K = 5
 GRAPH_START_K = 3
 GRAPH_HOPS = 2
 GRAPH_MAX_RESULTS = 10
+# 宿題（発展）: 改良版Graph（app/graph_plus.py）が返す最大ページ数と、返すページの類似度の下限
+GRAPH_PLUS_MAX_RESULTS = 6
+GRAPH_PLUS_MIN_SIMILARITY = 0.55
 EMBEDDING_MODEL = "gemini-embedding-001"
 EMBEDDING_DIMENSIONS = 768
 # 2,048トークンの上限に対し、タスク指定等の分を残す。超過時は切り捨てず停止する。

@@ -1,0 +1,31 @@
+[model] gemini-3.5-flash-lite
+講義資料（第1〜3回）において、ご自身で作成されたRAGの具体的な「実測平均応答時間」や「正答率」の数値そのものは記載されていません。
+
+代わって、資料では**「評価の考え方」**について以下のように説明されています。
+
+* **評価は同じ質問を複数回行ってばらつきを見る**
+  * 1回だけ試して「動いた」としても実際の正答率は分からないため、同じ質問を複数回（例：5回）聞いて、平均やばらつきを確認する必要がある（第2回・PDF p.13）。
+
+ご自身で作られたRAGのシステムで正確な数値を知るためには、実際に複数のテスト質問を用意し、それぞれを複数回実行して正答率や応答時間の平均を計測・集計してみましょう。その際、どのようなテストケースで何回測定したかを整理すると、より信頼性の高い評価になります。
+
+--- trace ---
+[tool call]   search_graph_plus({'query': 'RAG 実測平均応答時間 正答率'})
+[graph+] 質問の用語 ['RAG'] / 指定された回 [] / 候補 75 → 6 ページ
+    - 第2回 PDF p.13 帰結①：同じ質問でも、答えは毎回変わる（類似度 0.7075）← seed: ベクトル検索の上位
+    - 第2回 PDF p.24 事後学習の前と後：同じ質問でも、ふるまいが変わる（類似度 0.6685）← term: 質問の用語「RAG」を含む
+    - 第2回 PDF p.47 根拠と諸説：知識の追加は RAG が効きやすい（類似度 0.6678）← term: 質問の用語「RAG」を含む
+    - 第3回 PDF p.64 補足：長時間タスクの実行能力の最新動向（類似度 0.6845）← seed: ベクトル検索の上位
+    - 第1回 PDF p.49 [3] 例題のチャットボットは RAG ：検索してから答える（類似度 0.6635）← term: 質問の用語「RAG」を含む
+    - 第1回 PDF p.19 研究室の実例：大規模講義の質問に答えるチャットボット（類似度 0.6629）← term: 質問の用語「RAG」を含む
+[time] 回答完了まで 10.78 秒（検索・埋め込みを含む）
+[usage] 入力 3,852 tokens / 出力 226 tokens / モデル応答 2 回
+[cost] 生成APIの推定コスト: $0.001721 USD（埋め込み・索引構築分は含まない）
+                 pydantic-ai v2.57.0 • Python 3.14.10
+      / \
+     /   \       agent: target • model: google:gemini-3.5-flash-lite • tools: 1 • capabilities: 0
+   /___.___\
+  /    |    \    observability: off — see every model and tool call live, with cost
+/      |      \    set it up free with Logfire and a GitHub login: https://pydantic.dev/ai-setup.md
+`---.._|_..---'    or use any OpenTelemetry backend: https://pydantic.dev/docs/ai/logfire/#otel
+
+                 goes away once observability is on — or PYDANTIC_AI_NO_BANNER=1

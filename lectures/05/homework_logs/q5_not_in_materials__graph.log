@@ -1,0 +1,26 @@
+[model] gemini-3.5-flash-lite
+第1〜第3回の講義資料内には、今回作成したRAGの「実測平均応答時間」や「正答率」の具体的な数値は記載されていません。
+
+講義資料（第2回など）では、LLMが確率に基づいて出力するため同じ質問でも答えが毎回変わり、「1回試して動いた」では評価にならないこと、複数回聞いて平均やばらつき、正答率を測る必要があることが説明されています（第2回・PDF p.13）。
+
+実際に作成したRAGの性能を評価するためには、以下のような点を確認・計測してみましょう。
+- 同じ質問を複数回（例えば5回など）投げたときに、期待される正しい回答が何回得られるか（正答率の算出）
+- 処理にかかる時間を複数回測定し、その平均値やばらつきを見る
+
+--- trace ---
+[tool call]   search_graph({'query': '実測 平均応答時間 正答率 RAG'})
+[tool return] search_graph -> {"seeds": [{"page_id": "lec02-main-p013", "document_id": "lec02-main", "lecture": 2, "document_title": "基盤モデルの仕組み", "sec…
+[tool call]   search_graph({'query': 'RAG 実測 平均応答時間 正答率'})
+[tool return] search_graph -> {"seeds": [{"page_id": "lec02-main-p013", "document_id": "lec02-main", "lecture": 2, "document_title": "基盤モデルの仕組み", "sec…
+[time] 回答完了まで 18.15 秒（検索・埋め込みを含む）
+[usage] 入力 15,189 tokens / 出力 234 tokens / モデル応答 3 回
+[cost] 生成APIの推定コスト: $0.004043 USD（埋め込み・索引構築分は含まない）
+                 pydantic-ai v2.57.0 • Python 3.14.10
+      / \
+     /   \       agent: target • model: google:gemini-3.5-flash-lite • tools: 1 • capabilities: 0
+   /___.___\
+  /    |    \    observability: off — see every model and tool call live, with cost
+/      |      \    set it up free with Logfire and a GitHub login: https://pydantic.dev/ai-setup.md
+`---.._|_..---'    or use any OpenTelemetry backend: https://pydantic.dev/docs/ai/logfire/#otel
+
+                 goes away once observability is on — or PYDANTIC_AI_NO_BANNER=1

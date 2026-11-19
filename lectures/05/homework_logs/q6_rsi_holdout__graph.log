@@ -1,0 +1,32 @@
+[model] gemini-3.5-flash-lite
+第1回と第3回の講義資料におけるRSI（Recursive Self-Improvement：再帰的自己改善）の説明と位置づけは、それぞれ以下のようになっています。
+
+### 第1回での説明と位置づけ
+* **説明**: AIが自らの後継を開発・改良していく「AIがAIを改善する上昇スパイラル」として紹介されています（第1回・PDF p.10）。
+* **位置づけ**: 基盤モデルの登場とAIの進化を示すトピックの一つとして扱われており、「1. AIの能力が改善する（基盤モデルの進化）」→「2. AI自体がAIの改善を手伝う（コードや実験の担当）」という流れの先に位置づけられています（第1回・PDF p.10）。
+
+### 第3回での位置づけ
+* **位置づけ**: 第1回で見たRSIを、エージェントの構成要素である「ループ」「停止」「信頼境界」といった観点から見直し、より実践的な開発の文脈で捉え直しています（第3回・PDF p.54）。
+* 具体的には、エージェントが自身のハーネス（プロンプトやプロセスの仕組み）を改善する対象としてもRSIが考えられること、そして自律性の高いAIが開発を加速する一方で、行動範囲の管理（信頼境界やサンドボックス）という課題を伴う現在地にあることが解説されています（第3回・PDF p.57, p.58）。
+
+--- trace ---
+[tool call]   search_graph({'query': 'RSI 第1回 第3回'})
+[tool return] search_graph -> {"seeds": [{"page_id": "lec03-main-p054", "document_id": "lec03-main", "lecture": 3, "document_title": "AIエージェント", "sect…
+[tool call]   search_graph({'query': 'RSI 第1回'})
+[tool return] search_graph -> {"seeds": [{"page_id": "lec03-main-p054", "document_id": "lec03-main", "lecture": 3, "document_title": "AIエージェント", "sect…
+[tool call]   search_graph({'query': '第1回 RSI'})
+[tool return] search_graph -> {"seeds": [{"page_id": "lec03-main-p054", "document_id": "lec03-main", "lecture": 3, "document_title": "AIエージェント", "sect…
+[tool call]   search_graph({'query': 'Recursive Self-Improvement'})
+[tool return] search_graph -> {"seeds": [{"page_id": "lec03-main-p055", "document_id": "lec03-main", "lecture": 3, "document_title": "AIエージェント", "sect…
+[time] 回答完了まで 33.58 秒（検索・埋め込みを含む）
+[usage] 入力 42,964 tokens / 出力 407 tokens / モデル応答 5 回
+[cost] 生成APIの推定コスト: $0.007307 USD（埋め込み・索引構築分は含まない）
+                 pydantic-ai v2.57.0 • Python 3.14.10
+      / \
+     /   \       agent: target • model: google:gemini-3.5-flash-lite • tools: 1 • capabilities: 0
+   /___.___\
+  /    |    \    observability: off — see every model and tool call live, with cost
+/      |      \    set it up free with Logfire and a GitHub login: https://pydantic.dev/ai-setup.md
+`---.._|_..---'    or use any OpenTelemetry backend: https://pydantic.dev/docs/ai/logfire/#otel
+
+                 goes away once observability is on — or PYDANTIC_AI_NO_BANNER=1

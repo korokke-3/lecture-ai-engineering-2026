@@ -1,0 +1,33 @@
+[model] gemini-3.5-flash-lite
+第2回の資料によると、LoRAおよびQLoRAの仕組みについて次のように説明されています。
+
+* **LoRAが固定するものと学習するもの**
+  * **固定するもの**：モデル本体の元の重み（変化させずにそのままにする）
+  * **学習するもの**：細長い2つの小さな行列の積（低ランク）で表される「差分」に相当するパラメータのみ
+  * （第2回・PDF p.51, 52）
+
+* **QLoRAが加える（組み合わせる）もの**
+  * LoRAの手法に加えて、**「元の重みを4bitに圧縮（数値を粗く保存）」**することを加えます。これにより、さらに少ないメモリで大きなモデルの調整を可能にしています。
+  * （第2回・PDF p.51, 52）
+
+--- trace ---
+[tool call]   search_graph_plus({'query': '第2回 LoRA QLoRA 固定 学習 追加'})
+[graph+] 質問の用語 ['LoRA', 'QLoRA'] / 指定された回 [2] / 候補 52 → 6 ページ
+    - 第2回 PDF p.52 LoRA と QLoRA ：大きなモデルも GPU 1 台で調整できる（類似度 0.7965）← seed: ベクトル検索の上位
+    - 第2回 PDF p.51 PEFT ：モデル全体ではなく、一部だけを学習する（類似度 0.7742）← seed: ベクトル検索の上位
+    - 第2回 PDF p.60 今日の演習： QLoRA で出力形式を矯正し、効果を測る（類似度 0.7746）← seed: ベクトル検索の上位
+    - 第2回 PDF p.61 演習の進め方と提出物（仮）（類似度 0.7532）← term: 質問の用語「QLoRA」を含む
+    - 第2回 PDF p.58 Fine-Tuning する前のチェックリスト（類似度 0.7226）← term: 質問の用語「LoRA」を含む
+    - 第2回 PDF p.54 手本データの作り方：質問と、理想の回答の組を用意する（類似度 0.7401）← term: 質問の用語「LoRA」を含む
+[time] 回答完了まで 4.47 秒（検索・埋め込みを含む）
+[usage] 入力 3,851 tokens / 出力 210 tokens / モデル応答 2 回
+[cost] 生成APIの推定コスト: $0.001680 USD（埋め込み・索引構築分は含まない）
+                 pydantic-ai v2.57.0 • Python 3.14.10
+      / \
+     /   \       agent: target • model: google:gemini-3.5-flash-lite • tools: 1 • capabilities: 0
+   /___.___\
+  /    |    \    observability: off — see every model and tool call live, with cost
+/      |      \    set it up free with Logfire and a GitHub login: https://pydantic.dev/ai-setup.md
+`---.._|_..---'    or use any OpenTelemetry backend: https://pydantic.dev/docs/ai/logfire/#otel
+
+                 goes away once observability is on — or PYDANTIC_AI_NO_BANNER=1

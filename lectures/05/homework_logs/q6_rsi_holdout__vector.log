@@ -1,0 +1,33 @@
+[model] gemini-3.5-flash-lite
+第1回および第3回の講義資料におけるRSI（Recursive Self-Improvement：再帰的自己改善）の説明と位置づけは以下の通りです。
+
+### 第1回での説明
+* **定義**：RSIとは、AIが自らの後継を開発・改良していくこと（AIがAIを改善する上昇スパイラル）と説明されています（第1回・PDF p.10）。
+* **仕組みとプロセス**：
+  1. AIの能力が改善する（基盤モデルそのものの進化）
+  2. AI自体が、AIの改善を手伝う（コードや実験をAIが担う）
+  3. さらに強いAIが、さらに改善する（※資料提示時点では「ここはまだ到達していない」とされています）
+  という循環構造として示されています（第1回・PDF p.10）。
+
+### 第3回での位置づけ
+* **見直しの視点**：第1回で見たRSIを、**「ループ・停止・信頼境界」**という観点から改めて見直す位置づけとして扱われています（第3回・PDF p.54）。
+* **現在の状況と課題**：AIが研究・開発を支援し、できたモデルが次のAI開発を進めるという循環（RSI）の現在地として、開発の加速（例：Anthropicでのマージ済みコードの80%超をClaudeが作成）が示される一方で、「危険な自律性の課題」（隔離環境の境界を越えた事案など）や行動範囲の管理という課題が生じていることが示されています（第3回・PDF p.55, 57）。
+* **ハーネスとRSI**：エージェントが自らのハーネス（指示ファイルやツール定義、Skillなど）を改善する対象としてもRSIが捉えられており、作業記録の収集・修正・評価・採用のループを繰り返す仕組みとして論じられています（第3回・PDF p.58）。
+
+--- trace ---
+[tool call]   search_materials({'query': 'RSI'})
+[tool return] search_materials -> {"results": [{"page_id": "lec03-main-p057", "document_id": "lec03-main", "lecture": 3, "document_title": "AIエージェント", "se…
+[tool call]   search_materials({'query': '第1回 RSI'})
+[tool return] search_materials -> {"results": [{"page_id": "lec03-main-p054", "document_id": "lec03-main", "lecture": 3, "document_title": "AIエージェント", "se…
+[time] 回答完了まで 17.08 秒（検索・埋め込みを含む）
+[usage] 入力 6,031 tokens / 出力 469 tokens / モデル応答 3 回
+[cost] 生成APIの推定コスト: $0.002982 USD（埋め込み・索引構築分は含まない）
+                 pydantic-ai v2.57.0 • Python 3.14.10
+      / \
+     /   \       agent: target • model: google:gemini-3.5-flash-lite • tools: 1 • capabilities: 0
+   /___.___\
+  /    |    \    observability: off — see every model and tool call live, with cost
+/      |      \    set it up free with Logfire and a GitHub login: https://pydantic.dev/ai-setup.md
+`---.._|_..---'    or use any OpenTelemetry backend: https://pydantic.dev/docs/ai/logfire/#otel
+
+                 goes away once observability is on — or PYDANTIC_AI_NO_BANNER=1

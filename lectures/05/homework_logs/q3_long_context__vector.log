@@ -1,0 +1,29 @@
+[model] gemini-3.5-flash-lite
+第2回で説明された「長い文脈を均等には使えない（途中の情報は見落とされやすい）」という性質に対し、第3回では主に**「メモリ」**や**「サブエージェント」**といった仕組みで対処しています（第3回・PDF p.3）。
+
+具体的なアプローチとして、以下のような仕組みが挙げられます。
+
+* **メモリ**
+  作業が長くなるとコンテキストの制限や見落としが発生するため、必要な情報や過去の経緯を外の保存先（ファイルやデータベースなど）に書き出し、必要な部分だけをコンテキストに戻して再利用します（第3回・PDF p.3, p.13, p.38-40）。また、古い履歴を要約して詰め込む「コンパクション」なども活用されます（第3回・PDF p.39）。
+* **サブエージェント**
+  親エージェントのコンテキストが調べものの記録（検索やファイル読み込みのログなど）で埋まって見落としがおきないよう、作業を切り分けたサブエージェントに詳細な調査を任せ、要約された報告だけを親のコンテキストに戻す仕組みです（第3回・PDF p.31）。
+
+--- trace ---
+[tool call]   search_materials({'query': '長い文脈 均等には使えない 第2回'})
+[tool return] search_materials -> {"results": [{"page_id": "lec02-main-p015", "document_id": "lec02-main", "lecture": 2, "document_title": "基盤モデルの仕組み", "s…
+[tool call]   search_materials({'query': '第3回 エージェント 長い文脈 均等には使えない'})
+[tool return] search_materials -> {"results": [{"page_id": "lec03-main-p003", "document_id": "lec03-main", "lecture": 3, "document_title": "AIエージェント", "se…
+[tool call]   search_materials({'query': '第3回 Part 6 メモリ 長い文脈'})
+[tool return] search_materials -> {"results": [{"page_id": "lec03-main-p040", "document_id": "lec03-main", "lecture": 3, "document_title": "AIエージェント", "se…
+[time] 回答完了まで 9.29 秒（検索・埋め込みを含む）
+[usage] 入力 12,118 tokens / 出力 354 tokens / モデル応答 4 回
+[cost] 生成APIの推定コスト: $0.003974 USD（埋め込み・索引構築分は含まない）
+                 pydantic-ai v2.57.0 • Python 3.14.10
+      / \
+     /   \       agent: target • model: google:gemini-3.5-flash-lite • tools: 1 • capabilities: 0
+   /___.___\
+  /    |    \    observability: off — see every model and tool call live, with cost
+/      |      \    set it up free with Logfire and a GitHub login: https://pydantic.dev/ai-setup.md
+`---.._|_..---'    or use any OpenTelemetry backend: https://pydantic.dev/docs/ai/logfire/#otel
+
+                 goes away once observability is on — or PYDANTIC_AI_NO_BANNER=1
