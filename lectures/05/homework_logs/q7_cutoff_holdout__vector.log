@@ -1,0 +1,22 @@
+[model] gemini-3.5-flash-lite
+第2回で示された「知識には締め切りがある（事前学習が終わった後の出来事は知らない）」という性質に対し、第3回のエージェントでは**「新しい情報は、ツールで取りに行く」**ことで対処すると説明されています。
+
+（根拠：第3回・PDF p.3）
+
+--- trace ---
+[tool call]   search_materials({'query': '知識には締め切りがある'})
+[tool return] search_materials -> {"results": [{"page_id": "lec02-main-p022", "document_id": "lec02-main", "lecture": 2, "document_title": "基盤モデルの仕組み", "s…
+[tool call]   search_materials({'query': '第3回 エージェント 知識 締め切り'})
+[tool return] search_materials -> {"results": [{"page_id": "lec03-main-p066", "document_id": "lec03-main", "lecture": 3, "document_title": "AIエージェント", "se…
+[time] 回答完了まで 27.61 秒（検索・埋め込みを含む）
+[usage] 入力 7,341 tokens / 出力 110 tokens / モデル応答 3 回
+[cost] 生成APIの推定コスト: $0.002477 USD（埋め込み・索引構築分は含まない）
+                 pydantic-ai v2.57.0 • Python 3.14.10
+      / \
+     /   \       agent: target • model: google:gemini-3.5-flash-lite • tools: 1 • capabilities: 0
+   /___.___\
+  /    |    \    observability: off — see every model and tool call live, with cost
+/      |      \    set it up free with Logfire and a GitHub login: https://pydantic.dev/ai-setup.md
+`---.._|_..---'    or use any OpenTelemetry backend: https://pydantic.dev/docs/ai/logfire/#otel
+
+                 goes away once observability is on — or PYDANTIC_AI_NO_BANNER=1

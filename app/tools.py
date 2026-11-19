@@ -126,3 +126,20 @@ def search_graph(query: str) -> str:
         return json.dumps({"error": str(e)}, ensure_ascii=False)
     except APIError as e:
         return json.dumps({"error": api_error_message(e.code)}, ensure_ascii=False)
+
+
+def search_graph_plus(query: str) -> str:
+    """資料を検索し、質問の用語・回をまたぐ参照・前後ページをたどって選んだページの本文と引用情報を返す。
+
+    queryには質問の要点を、用語や「第N回」を残したまま指定する。各ページのreasonsは選ばれた経路。
+    """
+    import sqlite3
+    from google.genai.errors import APIError
+    from app.graph_plus import search_graph_plus as search
+
+    try:
+        return json.dumps(search(query), ensure_ascii=False)
+    except (ValueError, OSError, sqlite3.Error) as e:
+        return json.dumps({"error": str(e), "results": []}, ensure_ascii=False)
+    except APIError as e:
+        return json.dumps({"error": api_error_message(e.code), "results": []}, ensure_ascii=False)

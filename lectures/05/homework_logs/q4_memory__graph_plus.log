@@ -1,0 +1,37 @@
+[model] gemini-3.5-flash-lite
+第3回資料に基づき、ご質問の点についてヒントをまとめました。
+
+### 1. コンパクションとセッションをまたぐメモリの違い
+* **コンパクション（履歴の要約）**
+  * **範囲：** コンテキストの中（同じセッション内）で行われます（第3回・PDF p.39）。
+  * **仕組み：** 会話が長くなりコンテキストの上限に近づいたとき、古い履歴を要約して詰めることで、途中経過が落ちるのを防ぎます（第3回・PDF p.38, p.39）。
+* **セッションをまたぐメモリ**
+  * **範囲：** コンテキストの外の保存先（ファイルなど）に保存され、セッションをまたいで有効です（第3回・PDF p.39）。
+  * **仕組み：** 別のチャットや翌日以降の作業でも過去のやり取りや重要事項を引き継ぐために、モデルが要求したりエージェントが書き出したりして保持します（第3回・PDF p.13, p.39）。
+
+### 2. 日々のメモは全部長期メモリになる？
+* **扱い方：** 日々のメモ（例：`memory/日付.md`）がそのまますべて長期メモリ（例：`MEMORY.md`）になるわけではありません（第3回・PDF p.40）。
+* **仕組みのヒント：** OpenClawなどの実装例では、毎晩自動で見直し（dreaming）を行い、重複を除いたり何度も出てくる重要なテーマを探したりして、**基準を超えたものだけ**を長期メモリに移す仕組みになっています（第3回・PDF p.40）。
+* 一度きりの調べものなどは日々のメモに残るだけで、長期メモリが膨らまないように取捨選択されます（第3回・PDF p.40）。
+
+--- trace ---
+[tool call]   search_graph_plus({'query': 'コンパクション セッション メモリ 長期メモリ 第'})
+[graph+] 質問の用語 ['メモリ'] / 指定された回 [] / 候補 35 → 6 ページ
+    - 第3回 PDF p.65 補足：メモリと Context Engineering の最新動向（類似度 0.7104）← seed: ベクトル検索の上位
+    - 第3回 PDF p.39 実装例：Claude（類似度 0.7082）← seed: ベクトル検索の上位
+    - 第3回 PDF p.38 メモリがないと、毎回ゼロからやり直しになる（類似度 0.703）← seed: ベクトル検索の上位
+    - 第3回 PDF p.40 実装例：OpenClaw（類似度 0.6839）← term: 質問の用語「メモリ」を含む
+    - 第3回 PDF p.13 メモリ（類似度 0.6665）← term: 質問の用語「メモリ」を含む
+    - 第3回 PDF p.41 Skill：繰り返す作業の手順をファイルに保存しておく（類似度 0.6545）← term: 質問の用語「メモリ」を含む
+[time] 回答完了まで 11.97 秒（検索・埋め込みを含む）
+[usage] 入力 3,205 tokens / 出力 436 tokens / モデル応答 2 回
+[cost] 生成APIの推定コスト: $0.002052 USD（埋め込み・索引構築分は含まない）
+                 pydantic-ai v2.57.0 • Python 3.14.10
+      / \
+     /   \       agent: target • model: google:gemini-3.5-flash-lite • tools: 1 • capabilities: 0
+   /___.___\
+  /    |    \    observability: off — see every model and tool call live, with cost
+/      |      \    set it up free with Logfire and a GitHub login: https://pydantic.dev/ai-setup.md
+`---.._|_..---'    or use any OpenTelemetry backend: https://pydantic.dev/docs/ai/logfire/#otel
+
+                 goes away once observability is on — or PYDANTIC_AI_NO_BANNER=1

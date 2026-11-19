@@ -1,0 +1,25 @@
+[model] gemini-3.5-flash-lite
+第2回の資料によると、それぞれの特徴は以下の通りです。
+
+- **LoRA**
+  - **固定するもの**：元のモデルの重み（本体）は固定して学習しません（第2回・PDF p.52）。
+  - **学習するもの**：細長い2つの小さな行列（差分を表す低ランクの行列）のパラメータだけを学習します（第2回・PDF p.51, p.52）。
+
+- **QLoRA**
+  - LoRAの仕組み（本体を固定し、小さな行列だけを学習する）に加え、**元の重みを4bitに圧縮（量子化）すること**を加えます（第2回・PDF p.51, p.52）。これにより、大きなモデルでもより少ないメモリ（GPU 1台など）で調整できるようになります（第2回・PDF p.51, p.52）。
+
+--- trace ---
+[tool call]   search_graph({'query': 'LoRA QLoRA 固定 学習'})
+[tool return] search_graph -> {"seeds": [{"page_id": "lec02-main-p052", "document_id": "lec02-main", "lecture": 2, "document_title": "基盤モデルの仕組み", "sec…
+[time] 回答完了まで 7.85 秒（検索・埋め込みを含む）
+[usage] 入力 5,771 tokens / 出力 215 tokens / モデル応答 2 回
+[cost] 生成APIの推定コスト: $0.002269 USD（埋め込み・索引構築分は含まない）
+                 pydantic-ai v2.57.0 • Python 3.14.10
+      / \
+     /   \       agent: target • model: google:gemini-3.5-flash-lite • tools: 1 • capabilities: 0
+   /___.___\
+  /    |    \    observability: off — see every model and tool call live, with cost
+/      |      \    set it up free with Logfire and a GitHub login: https://pydantic.dev/ai-setup.md
+`---.._|_..---'    or use any OpenTelemetry backend: https://pydantic.dev/docs/ai/logfire/#otel
+
+                 goes away once observability is on — or PYDANTIC_AI_NO_BANNER=1

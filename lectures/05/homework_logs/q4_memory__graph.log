@@ -1,0 +1,36 @@
+[model] gemini-3.5-flash-lite
+ご質問ありがとうございます。AIエンジニアリング講座（AIE2026）第3回の講義資料を基に、コンパクションとセッションをまたぐメモリの違い、および日々のメモの扱いについてヒントをお伝えします。
+
+### 1. コンパクションとセッションをまたぐメモリの違い
+* **コンパクション（履歴の要約）**
+  * **有効な範囲**: 同じセッション（コンテキストの中）のループ内で行われます（第3回・PDF p.39、p.65）。
+  * **仕組み**: セッションが長くなりコンテキストの上限に近づいた際、古い履歴を「要約」に置き換えることで容量を詰める機能です（第3回・PDF p.39）。ただし、要約された範囲に含まれる細かい情報や文書などは失われます（第3回・PDF p.65）。
+* **セッションをまたぐメモリ**
+  * **有効な範囲**: セッションが終了して次の会話（別のセッション）になっても引き継がれます（第3回・PDF p.39）。
+  * **仕組み**: メモリツール等を用いて外の保存先（ファイルなど）に情報を書き出し、次回の会話の最初に読み戻すことで、ゼロからやり直すのを防ぎます（第3回・PDF p.39）。
+
+---
+
+### 2. 日々のメモは全部長期メモリになる？
+* **資料からのヒント**:
+  * OpenClawなどの実装例では、日々の細かいメモ（例：日別のやり取り）がそのまま全て長期メモリ（MEMORY.mdなど）に直行するわけではありません（第3回・PDF p.40）。
+  * 毎晩の見直し（dreamingなどのプロセス）を通じて、**「重複を除いて候補を並べる」「何度も出てくるテーマを探す」「基準を超えたものだけ残す」**といったフィルタリングが行われます（第3回・PDF p.40）。
+  * そのため、一度きりの調べものなどは日々のメモに残るだけで終わり、長期メモリが不要に膨らまないような仕組みになっています（第3回・PDF p.40）。
+
+すべてをそのまま蓄積するのではなく、「何を残りとして選別するか」という設計の視点が重要になります（第3回・PDF p.38, p.40）。この仕組みを参考に、情報の取捨選択について考えてみてください。
+
+--- trace ---
+[tool call]   search_graph({'query': 'コンパクション セッション メモリ 長期メモリ 日々のメモ'})
+[tool return] search_graph -> {"seeds": [{"page_id": "lec03-main-p039", "document_id": "lec03-main", "lecture": 3, "document_title": "AIエージェント", "sect…
+[time] 回答完了まで 12.19 秒（検索・埋め込みを含む）
+[usage] 入力 5,288 tokens / 出力 551 tokens / モデル応答 2 回
+[cost] 生成APIの推定コスト: $0.002964 USD（埋め込み・索引構築分は含まない）
+                 pydantic-ai v2.57.0 • Python 3.14.10
+      / \
+     /   \       agent: target • model: google:gemini-3.5-flash-lite • tools: 1 • capabilities: 0
+   /___.___\
+  /    |    \    observability: off — see every model and tool call live, with cost
+/      |      \    set it up free with Logfire and a GitHub login: https://pydantic.dev/ai-setup.md
+`---.._|_..---'    or use any OpenTelemetry backend: https://pydantic.dev/docs/ai/logfire/#otel
+
+                 goes away once observability is on — or PYDANTIC_AI_NO_BANNER=1

@@ -1,0 +1,32 @@
+[model] gemini-3.5-flash-lite
+講義内容に基づいて、Fine-TuningとRAGのどちらを先に試すべきか、その理由と判断の順番について解説します。
+
+### 判断の順番
+最新の講義内容を答えさせたい場合は、**まずRAG（検索）を試すべき**です（第2回・PDF p.46）。
+
+### 理由
+第2回の講義資料では、モデルを直す際の基本的な方針として以下のように整理されています。
+
+* **知識の追加はRAGが適している**
+  * 最新の講義内容や新しい事実などの「知識」をモデルに覚えさせる場合、Fine-Tuning（FT）で行うのは非効率であり、研究報告でもRAGが一貫して優れているとされています（第2回・PDF p.46, p.47）。
+  * FTで新しい知識を覚えさせようとすると、学習が遅くなるだけでなく、ハルシネーション（誤り）が増える傾向にあることも指摘されています（第2回・PDF p.47）。
+* **Fine-Tuningが向いているのは「振る舞い」**
+  * 一方で、Fine-Tuningが向いているのは出力形式・口調・手順の守り方といった「振る舞い」の修正です（第2回・PDF p.46）。チャットボットの例でも、資料にしかない新しい事実や知識をFTだけで答えられるようにするのは難しいとされています（第2回・PDF p.53）。
+
+したがって、最新の講義内容という「知識」を扱わせるためには、まず検索を活用するRAGを検討するのが基本線となります（第2回・PDF p.46, p.47）。
+
+--- trace ---
+[tool call]   search_materials({'query': 'Fine-Tuning RAG 最新 講義内容 どちら'})
+[tool return] search_materials -> {"results": [{"page_id": "lec02-main-p047", "document_id": "lec02-main", "lecture": 2, "document_title": "基盤モデルの仕組み", "s…
+[time] 回答完了まで 4.58 秒（検索・埋め込みを含む）
+[usage] 入力 2,723 tokens / 出力 395 tokens / モデル応答 2 回
+[cost] 生成APIの推定コスト: $0.001804 USD（埋め込み・索引構築分は含まない）
+                 pydantic-ai v2.57.0 • Python 3.14.10
+      / \
+     /   \       agent: target • model: google:gemini-3.5-flash-lite • tools: 1 • capabilities: 0
+   /___.___\
+  /    |    \    observability: off — see every model and tool call live, with cost
+/      |      \    set it up free with Logfire and a GitHub login: https://pydantic.dev/ai-setup.md
+`---.._|_..---'    or use any OpenTelemetry backend: https://pydantic.dev/docs/ai/logfire/#otel
+
+                 goes away once observability is on — or PYDANTIC_AI_NO_BANNER=1

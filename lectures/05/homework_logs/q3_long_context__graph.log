@@ -1,0 +1,27 @@
+[model] gemini-3.5-flash-lite
+第2回で説明された「長い文脈を均等には使えない（途中の情報は見落とされやすい、U字型）」という性質に対して、第3回ではエージェントの「メモリ」の仕組みや、コンテキストを管理する工夫によって対処しています（第3回・PDF p.38-39）。
+
+すべてをそのままコンテキストに蓄積すると、古い情報が埋もれたり上限に達して途中経過が落ちたりするため、以下のような仕組みで情報の取捨選択や要約が行われます。
+
+* **コンパクション（履歴の要約）**：同じセッション内の古い履歴を要約に置き換えることで、コンテキストを圧迫させずに重要な情報を残します（第3回・PDF p.39）。
+* **メモリツールや長期メモリ**：セッションをまたいで必要な情報や過去のやり取りの要点を外部の保存先に書き出し、エージェントが自ら読み戻すことで、毎回ゼロからやり直すのを防ぎます（第3回・PDF p.38-40）。
+
+すべてを一度に長大に読ませるのではなく、「何を残し、何を消すか」を設計・管理することがポイントになります（第3回・PDF p.38）。
+
+--- trace ---
+[tool call]   search_graph({'query': '長い文脈を均等には使えない'})
+[tool return] search_graph -> {"seeds": [{"page_id": "lec02-main-p015", "document_id": "lec02-main", "lecture": 2, "document_title": "基盤モデルの仕組み", "sec…
+[tool call]   search_graph({'query': 'コンパクション メモリ 情報を整理する 長い作業が途切れる'})
+[tool return] search_graph -> {"seeds": [{"page_id": "lec03-main-p038", "document_id": "lec03-main", "lecture": 3, "document_title": "AIエージェント", "sect…
+[time] 回答完了まで 19.08 秒（検索・埋め込みを含む）
+[usage] 入力 14,844 tokens / 出力 328 tokens / モデル応答 3 回
+[cost] 生成APIの推定コスト: $0.004174 USD（埋め込み・索引構築分は含まない）
+                 pydantic-ai v2.57.0 • Python 3.14.10
+      / \
+     /   \       agent: target • model: google:gemini-3.5-flash-lite • tools: 1 • capabilities: 0
+   /___.___\
+  /    |    \    observability: off — see every model and tool call live, with cost
+/      |      \    set it up free with Logfire and a GitHub login: https://pydantic.dev/ai-setup.md
+`---.._|_..---'    or use any OpenTelemetry backend: https://pydantic.dev/docs/ai/logfire/#otel
+
+                 goes away once observability is on — or PYDANTIC_AI_NO_BANNER=1

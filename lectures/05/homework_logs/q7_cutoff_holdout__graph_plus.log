@@ -1,0 +1,29 @@
+[model] gemini-3.5-flash-lite
+第3回の資料では、第2回で学んだモデルの性質に対して、エージェントがどのように対処するか（どのパーツで対応するか）が整理されています。
+
+- **第3回・PDF p.3**：
+  第2回で示された「知識には締め切りがある」という性質に対して、エージェントでは**「新しい情報は、ツールで取りに行く」**という方法（Part 4のツール）で対処すると説明されています。
+
+この仕組みをヒントに、エージェントが外部の最新情報やデータベースにアクセスする手段について考えてみましょう。
+
+--- trace ---
+[tool call]   search_graph_plus({'query': '第2回 知識には締め切りがある 第3回 エージェント'})
+[graph+] 質問の用語 ['AIエージェント'] / 指定された回 [2, 3] / 候補 126 → 6 ページ
+    - 第3回 PDF p.3 第2回で見たモデルの性質が、今日の設計の前提になる（類似度 0.7554）← seed: ベクトル検索の上位
+    - 第3回 PDF p.54 Part 10 RSI とエージェント（類似度 0.7196）← term: 質問の用語「AIエージェント」を含む
+    - 第3回 PDF p.4 アジェンダ（類似度 0.7338）← seed: ベクトル検索の上位
+    - 第3回 PDF p.5 Part 2 エージェントを組み立てる（類似度 0.7287）← term: 質問の用語「AIエージェント」を含む
+    - 第2回 PDF p.62 次回： AI エージェント。今日の性質が設計の前提になる（類似度 0.7261）← term: 質問の用語「AIエージェント」を含む
+    - 第3回 PDF p.71 補足：動向を追うための一次情報（類似度 0.7237）← term: 質問の用語「AIエージェント」を含む
+[time] 回答完了まで 16.47 秒（検索・埋め込みを含む）
+[usage] 入力 3,015 tokens / 出力 156 tokens / モデル応答 2 回
+[cost] 生成APIの推定コスト: $0.001294 USD（埋め込み・索引構築分は含まない）
+                 pydantic-ai v2.57.0 • Python 3.14.10
+      / \
+     /   \       agent: target • model: google:gemini-3.5-flash-lite • tools: 1 • capabilities: 0
+   /___.___\
+  /    |    \    observability: off — see every model and tool call live, with cost
+/      |      \    set it up free with Logfire and a GitHub login: https://pydantic.dev/ai-setup.md
+`---.._|_..---'    or use any OpenTelemetry backend: https://pydantic.dev/docs/ai/logfire/#otel
+
+                 goes away once observability is on — or PYDANTIC_AI_NO_BANNER=1

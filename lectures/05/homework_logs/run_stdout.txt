@@ -1,0 +1,42 @@
+q1_single              vector     根拠 1/1  本文  2,956字  不足 []
+q1_single              graph      根拠 1/1  本文  5,382字  不足 []
+q1_single              graph_plus 根拠 1/1  本文  3,505字  不足 []
+q2_ft_vs_rag           vector     根拠 3/4  本文  2,044字  不足 ['lec01-main-p048']
+q2_ft_vs_rag           graph      根拠 3/4  本文  5,187字  不足 ['lec01-main-p048']
+q2_ft_vs_rag           graph_plus 根拠 4/4  本文  2,452字  不足 []
+q3_long_context        vector     根拠 2/3  本文  2,146字  不足 ['lec02-main-p015']
+q3_long_context        graph      根拠 2/3  本文  3,567字  不足 ['lec02-main-p015']
+q3_long_context        graph_plus 根拠 3/3  本文  2,769字  不足 []
+q4_memory              vector     根拠 3/3  本文  2,382字  不足 []
+q4_memory              graph      根拠 2/3  本文  5,658字  不足 ['lec03-main-p013']
+q4_memory              graph_plus 根拠 3/3  本文  2,888字  不足 []
+q5_not_in_materials    vector     根拠 0/0  本文  3,498字  不足 []
+q5_not_in_materials    graph      根拠 0/0  本文  5,672字  不足 []
+q5_not_in_materials    graph_plus 根拠 0/0  本文  3,350字  不足 []
+q6_rsi_holdout         vector     根拠 1/2  本文  1,738字  不足 ['lec01-main-p010']
+q6_rsi_holdout         graph      根拠 1/2  本文  3,928字  不足 ['lec01-main-p010']
+q6_rsi_holdout         graph_plus 根拠 2/2  本文  2,268字  不足 []
+q7_cutoff_holdout      vector     根拠 1/2  本文  2,430字  不足 ['lec02-main-p022']
+q7_cutoff_holdout      graph      根拠 1/2  本文  3,233字  不足 ['lec02-main-p022']
+q7_cutoff_holdout      graph_plus 根拠 1/2  本文  2,657字  不足 ['lec02-main-p022']
+{'question': 'q1_single', 'mode': 'vector', 'time': 16.91, 'input_tokens': 3116.0, 'output_tokens': 209.0, 'requests': 2.0, 'cost': 0.001457, 'cited': ['第2回・PDF p.51', '第2回・PDF p.52']}
+{'question': 'q1_single', 'mode': 'graph', 'time': 7.85, 'input_tokens': 5771.0, 'output_tokens': 215.0, 'requests': 2.0, 'cost': 0.002269, 'cited': ['第2回・PDF p.51', '第2回・PDF p.52']}
+{'question': 'q1_single', 'mode': 'graph_plus', 'time': 4.47, 'input_tokens': 3851.0, 'output_tokens': 210.0, 'requests': 2.0, 'cost': 0.00168, 'cited': ['第2回・PDF p.51']}
+{'question': 'q2_ft_vs_rag', 'mode': 'vector', 'time': 4.58, 'input_tokens': 2723.0, 'output_tokens': 395.0, 'requests': 2.0, 'cost': 0.001804, 'cited': ['第2回・PDF p.46', '第2回・PDF p.47', '第2回・PDF p.53']}
+{'question': 'q2_ft_vs_rag', 'mode': 'graph', 'time': 9.57, 'input_tokens': 5421.0, 'output_tokens': 430.0, 'requests': 2.0, 'cost': 0.002701, 'cited': ['第1回・PDF p.49', '第2回・PDF p.53']}
+{'question': 'q2_ft_vs_rag', 'mode': 'graph_plus', 'time': 5.23, 'input_tokens': 3102.0, 'output_tokens': 417.0, 'requests': 2.0, 'cost': 0.001973, 'cited': ['第2回・PDF p.27', '第2回・PDF p.50', '第2回・PDF p.53']}
+{'question': 'q3_long_context', 'mode': 'vector', 'time': 9.29, 'input_tokens': 12118.0, 'output_tokens': 354.0, 'requests': 4.0, 'cost': 0.003974, 'cited': ['第3回・PDF p.3', '第3回・PDF p.31', '第3回・PDF p.39']}
+{'question': 'q3_long_context', 'mode': 'graph', 'time': 19.08, 'input_tokens': 14844.0, 'output_tokens': 328.0, 'requests': 3.0, 'cost': 0.004174, 'cited': ['第3回・PDF p.38', '第3回・PDF p.39']}
+{'question': 'q3_long_context', 'mode': 'graph_plus', 'time': 16.56, 'input_tokens': 8071.0, 'output_tokens': 318.0, 'requests': 3.0, 'cost': 0.003216, 'cited': ['第3回・PDF p.13', '第3回・PDF p.3', '第3回・PDF p.39']}
+{'question': 'q4_memory', 'mode': 'vector', 'time': 22.64, 'input_tokens': 6358.0, 'output_tokens': 471.0, 'requests': 3.0, 'cost': 0.003085, 'cited': ['第3回・PDF p.13', '第3回・PDF p.38', '第3回・PDF p.39', '第3回・PDF p.40']}
+{'question': 'q4_memory', 'mode': 'graph', 'time': 12.19, 'input_tokens': 5288.0, 'output_tokens': 551.0, 'requests': 2.0, 'cost': 0.002964, 'cited': ['第3回・PDF p.38', '第3回・PDF p.39', '第3回・PDF p.40', '第3回・PDF p.65']}
+{'question': 'q4_memory', 'mode': 'graph_plus', 'time': 11.97, 'input_tokens': 3205.0, 'output_tokens': 436.0, 'requests': 2.0, 'cost': 0.002052, 'cited': ['第3回・PDF p.13', '第3回・PDF p.38', '第3回・PDF p.39', '第3回・PDF p.40']}
+{'question': 'q5_not_in_materials', 'mode': 'vector', 'time': 11.4, 'input_tokens': 3199.0, 'output_tokens': 100.0, 'requests': 2.0, 'cost': 0.00121, 'cited': []}
+{'question': 'q5_not_in_materials', 'mode': 'graph', 'time': 18.15, 'input_tokens': 15189.0, 'output_tokens': 234.0, 'requests': 3.0, 'cost': 0.004043, 'cited': ['第2回・PDF p.13']}
+{'question': 'q5_not_in_materials', 'mode': 'graph_plus', 'time': 10.78, 'input_tokens': 3852.0, 'output_tokens': 226.0, 'requests': 2.0, 'cost': 0.001721, 'cited': ['第2回・PDF p.13']}
+{'question': 'q6_rsi_holdout', 'mode': 'vector', 'time': 17.08, 'input_tokens': 6031.0, 'output_tokens': 469.0, 'requests': 3.0, 'cost': 0.002982, 'cited': ['第1回・PDF p.10', '第3回・PDF p.54', '第3回・PDF p.55', '第3回・PDF p.58']}
+{'question': 'q6_rsi_holdout', 'mode': 'graph', 'time': 33.58, 'input_tokens': 42964.0, 'output_tokens': 407.0, 'requests': 5.0, 'cost': 0.007307, 'cited': ['第1回・PDF p.10', '第3回・PDF p.54', '第3回・PDF p.57']}
+{'question': 'q6_rsi_holdout', 'mode': 'graph_plus', 'time': 18.05, 'input_tokens': 2900.0, 'output_tokens': 277.0, 'requests': 2.0, 'cost': 0.001562, 'cited': ['第1回・PDF p.10', '第3回・PDF p.54', '第3回・PDF p.58']}
+{'question': 'q7_cutoff_holdout', 'mode': 'vector', 'time': 27.61, 'input_tokens': 7341.0, 'output_tokens': 110.0, 'requests': 3.0, 'cost': 0.002477, 'cited': ['第3回・PDF p.3']}
+{'question': 'q7_cutoff_holdout', 'mode': 'graph', 'time': 22.39, 'input_tokens': 13343.0, 'output_tokens': 162.0, 'requests': 3.0, 'cost': 0.00331, 'cited': ['第3回・PDF p.3']}
+{'question': 'q7_cutoff_holdout', 'mode': 'graph_plus', 'time': 16.47, 'input_tokens': 3015.0, 'output_tokens': 156.0, 'requests': 2.0, 'cost': 0.001294, 'cited': ['第3回・PDF p.3']}
