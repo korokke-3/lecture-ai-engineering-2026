@@ -4,11 +4,15 @@
 
 <!-- [tool call] の行は、表示された行をそのまま貼り付けてください。終わらなかった STEP は、空欄のままでかまいません。 -->
 
-- STEP 1 のツールの名前：
-- STEP 2 の [tool call]：
-- STEP 3 の [tool call]：
-- STEP 4 の [tool call]：
+- STEP 1 のツールの名前：glossary_search_glossary
+- STEP 2 の [tool call]：glossary_search_glossary({'query': '3レベル'})
+- STEP 3 の [tool call]：fetch_fetch({'url': 'https://modelcontextprotocol.io/'})
+- STEP 4 の [tool call]：aws_aws___search_documentation({'search_phrase': 'Amazon S3 バージョニング', 'topics': ['general']})
 - 気づき・疑問：
+  - STEP 3 では、fetch_fetch のあとに頼んでいない glossary_search_glossary({'query': 'MCP'}) も呼ばれ、回答の最後に関連する回が付いた。指示文が用語集を先に引くよう促しているためだと考えられる。
+  - STEP 4 では、日本語の検索語で 1 回目に関係の薄い結果が返り、モデルが英語の 'Using versioning in S3 buckets' で検索し直した。外部サーバーの検索は英語のほうが当たりやすいようだ。
+  - fetch と aws を足すと、入力トークンは STEP 2 の 709 から約 1 万に増えた。取得したページ本文や検索結果がそのまま文脈に入るためである。
+  - aws のツール名は aws_aws___search_documentation となり、サーバー名が二重に付く。AWS 側のツール名がもともと aws___ で始まるためである。
 
 ## 宿題
 
